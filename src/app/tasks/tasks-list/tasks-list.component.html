@@ -1,0 +1,44 @@
+<div class='tasks-container' >
+    
+    <div class='completed-tasks'>
+        <p>IN PROGRESS</p>
+        <div *ngFor='let task of tasks'>
+            <div *ngIf='!task.isDone' class='task-card'>
+                <div class="completed-tasks__badge">
+                    <div class="completed-tasks__badge-item">asjdashkd</div>
+                </div>
+                <h2>{{task.title}}</h2>
+                <div class='task-description'>
+                    <input type='checkbox' name={{task.title}}
+                    (click)='onChange(task)'
+                    [checked]="task.isDone">
+                    <p>{{task.description}}</p>
+                </div>
+                <div class='task-timeline'>
+                    <p>{{task.addedDate | date : 'dd MMM YYYY'}}</p>
+                    <p>{{task.deadlineDate | date : 'dd MMM YYYY'}}</p>
+                </div>
+            </div> 
+        </div>
+    </div>
+
+    <div class="todo-tasks">
+        <p>COMPLETED</p>
+        <div  *ngFor='let task of tasks'>
+            <div *ngIf='task.isDone' class='task-card'>
+                <h2>{{task.title}}</h2>
+                <div class='task-description'>
+                    <input type='checkbox' name={{task._id}}
+                    (click)='onChange(task)'
+                    checked=true>
+                    <p>{{task.description}}</p>
+                </div>
+                <div class='task-timeline'>
+                    <p>{{task.addedDate | date : 'dd MMM YYYY'}}</p>
+                    <p>{{task.deadlineDate | date : 'dd MMM YYYY'}}</p>
+                </div>
+            </div> 
+        </div>
+    </div>
+
+</div>
