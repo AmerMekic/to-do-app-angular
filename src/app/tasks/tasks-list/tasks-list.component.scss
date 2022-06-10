@@ -1,0 +1,95 @@
+//todo placeholder, mixin
+
+.tasks-container{
+    display: flex;
+    flex-flow: row;
+    width: auto;
+    justify-content: center;
+
+    & .completed-tasks{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+
+        &__badge {
+            display: flex;
+            justify-content: end;
+            &-item{
+                margin-top: -10px;
+                background-color: white;
+                margin-right: 7px;
+            }
+        }
+
+        & p{
+            align-self: center;
+        }
+    
+
+         .task-card{
+            display: flex;
+            flex-direction: column;
+            border: 1px solid black;
+            margin: 20px;
+            
+            h2{
+                align-self: center;
+            }
+
+            & .task-description{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            & .task-timeline{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+    }
+
+    & .todo-tasks{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        border-left: 3px solid black;
+        
+        &__badge{
+            display: flex;
+            justify-content: end;
+            &-item{
+                top: -5px;
+            }
+        }
+        & p{
+            align-self: center;
+        }
+        & .task-card{
+            display: flex;
+            flex-direction: column;
+            border: 1px solid black;
+            margin: 20px;
+            
+            h2{
+                align-self: center;
+            }
+
+            & .task-description{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            & .task-timeline{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+    }
+    
+}
