@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ITask } from '../task';
 import { TasksService } from '../tasks.service';
 
@@ -10,16 +10,24 @@ import { TasksService } from '../tasks.service';
 export class TasksListComponent implements OnInit {
 
   tasks: ITask[] = [];
-
+  completedTasks: ITask[] = [];
+  
   constructor(private tasksService: TasksService) { }
 
   onChange(task: ITask): void{
     task.isDone = !task.isDone;
+    
+    if(this.completedTasks.includes(task)){
+      this.completedTasks = this.completedTasks.filter(value => value._id !== task._id)
+    }
+    else{
+      this.completedTasks.push(task)
+    }
+    
   }
 
   ngOnInit(): void {
     this.tasks = this.tasksService.getTasks();
-    console.log(this.tasks)
   }
 
 }

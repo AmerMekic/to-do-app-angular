@@ -1,0 +1,20 @@
+<div *ngIf="task" [class]="'task-container task-container--'+ getCategoryBasedOnDeadline(currentDate, task.deadlineDate, task)">
+    <div class='task-container__task-timeline'> 
+        <p>Created: {{task.addedDate | date : 'dd MMM YYYY'}}</p>
+        <p>Deadline: {{task.deadlineDate | date : 'dd MMM YYYY'}}</p>
+    </div> 
+    <h2 class="task-container__title">{{task.title}}</h2>
+    <div class='task-container__task-description'>
+        <input *ngIf='task.category !== "expired"'
+        type='checkbox' name={{task.title}}
+        [checked]="task.isDone"
+        (click)="onChange(task)"
+        class="task-container__task-description__checkbox">
+        <p class="task-container__task-description__text">
+            {{task.description}}
+        </p>
+    </div>
+    <div class="task-container__badge">
+        <div class="task-container__badge-item">asjdashkd</div>
+    </div>
+</div>
