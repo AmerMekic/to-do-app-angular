@@ -1,9 +1,11 @@
+import { Timestamp } from "@angular/fire/firestore";
+
 export interface ITask {
-    _id: string,
+    _id?: string,
     title: string,
     description: string,
-    deadlineDate: Date,
-    addedDate: Date,
+    deadlineDate: Timestamp,
+    addedDate: Timestamp,
     isDone: boolean,
     category: string,
     user: string

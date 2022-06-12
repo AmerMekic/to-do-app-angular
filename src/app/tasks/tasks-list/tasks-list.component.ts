@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Timestamp } from '@angular/fire/firestore';
+import { catchError, of, tap, timestamp } from 'rxjs';
 import { ITask } from '../task';
 import { TasksService } from '../tasks.service';
 
@@ -8,8 +10,8 @@ import { TasksService } from '../tasks.service';
   styleUrls: ['./tasks-list.component.scss']
 })
 export class TasksListComponent implements OnInit {
-
-  tasks: ITask[] = [];
+  testTime!: Timestamp;
+  tasks: ITask[] = [];  
   completedTasks: ITask[] = [];
   
   constructor(private tasksService: TasksService) { }
@@ -27,7 +29,9 @@ export class TasksListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tasks = this.tasksService.getTasks();
+   this.tasksService.getTasks().subscribe((res: ITask[]) => {
+    this.tasks = res;
+   });
   }
 
 }
