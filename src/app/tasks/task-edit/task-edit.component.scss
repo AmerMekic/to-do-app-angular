@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+@mixin font-abeezee {
+    font-family: ABeeZee , 'sans-serif';
+    color: white;
+    font-weight: 400;
+    font-size: 15px;
+}
+.errormsg{
+    width: auto;
+    position: absolute;
+    background-color: rgba(208, 83, 83, .9);
+    left: 42%;
+    top: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    animation-name: error-msg-fade-in;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+
+    & div{
+       position: relative;
+       margin-bottom: 5px;
+       color: white;
+       animation-name: error-msg-fade-in;
+       animation-duration: 1s;
+       font-family: ABeeZee, sans-serif;
+    }
+}
+
+@keyframes error-msg-fade-in {
+    0%{opacity: 0;};
+    100%{opacity: 1;}
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    @include font-abeezee();
+
+    &__headline{
+        color: #5998C5;
+        font-size: 40px;
+        margin-top: -4px;
+    }
+    
+    &__input{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 30%;
+        
+        &-container{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            justify-content: space-between;
+            border: 1px solid white;
+            padding: 20px;
+            border-radius: 20px;
+            
+            &__label{
+
+                margin-top: -30px;
+                margin-bottom: 30px;
+                &-item{
+                    background: #333333;
+                    padding: 0px 10px;
+                }
+            }
+            
+            &__field{
+                padding: 0px 10px;
+                background: none;
+                border: none;
+                border-bottom: 2px solid #5998C5;
+                outline: none;
+                color-scheme: dark;
+                resize: none;
+                @include font-abeezee();
+            }
+
+            &__field:active{
+                border: none;
+                outline: none;
+                border-bottom: 2px solid #5998C5;
+            }
+        }
+    }
+    &__button-container{
+        width: 100%;
+        display: flex;
+        flex: row;
+        justify-content: space-between;
+        &__btn{
+            align-self: center;
+            width: 40%;
+            background: none;
+            border-radius: 15px;
+            padding: 10px;
+            border: 2px solid #5998C5;
+            transition-duration: 0.5s;
+            @include font-abeezee();
+        }
+       
+    }
+
+    .edit:hover{
+        transition-duration: 0.5s;
+        background-color: #05B384;
+        cursor: pointer;
+    }
+    .del:hover{
+        transition-duration: 0.5s;
+        background-color: #C03535;
+        cursor: pointer;
+    }
+}

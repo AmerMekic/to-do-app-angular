@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+
 @mixin flex-column {
     display: flex;
     flex-direction: column;
@@ -8,6 +11,8 @@
 }
 @mixin text-white{
     color: white;
+    font-family: ABeeZee;
+    font-weight: 100;
 }
 
 @mixin badge-border{
@@ -15,6 +20,7 @@
     border-radius: 10px;
     background-color: #393E41;
 }
+ 
 
 .task-container{
     @include flex-column();
@@ -89,7 +95,47 @@
             @include text-white();
         }
     }
+    &__edit{
+        display: flex;
+        justify-content: flex-end;
 
+        &-btn{
+            margin-right: 30px;
+            background: none;
+            border: none;
+            
+            &__tooltip{
+                visibility: hidden;
+                opacity: 0;
+                position: absolute;
+                background-color: black;
+                @include text-white();
+                border: 1px solid black;
+                transform: translate(-10px, -50px);
+                transition-duration: .5s;
+                padding: 5px 10px;
+                border-radius: 10px;
+            }
+
+            &__tooltip::after{
+                content: "";
+                position: absolute;
+                top:100%;
+                left: 50%;
+                margin-left: -8px;
+                border-width: 8px;
+                border-style: solid;
+                border-color: black transparent transparent transparent;
+            }
+           
+        }
+        &-btn:hover &-btn__tooltip{
+            visibility: visible;
+            opacity: 1;
+            transition-duration: .5s;
+        }
+    }
+    
 
 
 }

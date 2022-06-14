@@ -1,7 +1,8 @@
 import {  Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { differenceInCalendarDays } from 'date-fns';
 import { ITask } from '../task';
-
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 
 enum DateWarningSignEnum{
   Warning = 'warning',
@@ -18,10 +19,11 @@ enum DateWarningSignEnum{
 })
 
 export class TaskComponent implements OnInit {
-
+  faPen = faPenToSquare;
   @Input() task?: ITask;
   currentDate: Date = new Date();
-  constructor() {}
+  
+  constructor(private router: Router) {}
 
   @Output() addCompletedItem = new EventEmitter<ITask>();
 
@@ -52,6 +54,10 @@ export class TaskComponent implements OnInit {
       task.category = 'neutral'
       return DateWarningSignEnum.Neutral
     }
+  }
+
+  public goToEditTask(task: ITask):void {
+    this.router.navigate(['/editTask/' + task._id])
   }
 
  

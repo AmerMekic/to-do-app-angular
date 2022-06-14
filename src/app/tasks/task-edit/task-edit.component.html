@@ -1,0 +1,46 @@
+<div *ngIf="!isValid()" class="errormsg">
+    <div *ngIf="task.title.length === 0">
+        Title can't be empty
+    </div>
+    <div *ngIf="task.description.length === 0">
+        Description can't be empty
+    </div>
+    <div *ngIf="task.user.length === 0">
+        Username can't be empty
+    </div>
+</div>
+
+<div *ngIf="task" class="form-container">
+    <h2 class="form-container__headline">Edit your task</h2>
+    <div class="form-container__input">
+        <div class="form-container__input-container">
+            <div class="form-container__input-container__label">
+                <label for="title" class="form-container__input-container__label-item">Task title </label>
+            </div>
+            <input type="text" name="title" [(ngModel)]="task.title" class="form-container__input-container__field">
+        </div>
+        <div class="form-container__input-container">
+            <div class="form-container__input-container__label">
+                <label for="title" class="form-container__input-container__label-item">Task description </label>
+            </div>
+            <textarea maxlength="400" type="text" name="description" [(ngModel)]="task.description" class="form-container__input-container__field"
+            cols="20" rows="5"></textarea>
+        </div>
+        <div class="form-container__input-container">
+            <div class="form-container__input-container__label">
+                <label for="title" class="form-container__input-container__label-item">User </label>
+            </div>
+            <input type="text" name="user"  [(ngModel)]="task.user" class="form-container__input-container__field">
+        </div>
+        <div class="form-container__input-container">
+            <div class="form-container__input-container__label">
+                <label for="title" class="form-container__input-container__label-item">Deadline </label>
+            </div>
+            <input type="date" name="date" [(ngModel)]="deadline" class="form-container__input-container__field">
+        </div>
+        <div class="form-container__button-container"> 
+            <button (click)="onComplete()" class="form-container__button-container__btn edit">Edit</button>
+            <button (click)="onRemove()" class="form-container__button-container__btn del">Delete task</button> 
+        </div>
+    </div>
+</div>

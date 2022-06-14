@@ -14,6 +14,13 @@
             {{task.description}}
         </p>
     </div>
+    <div class="task-container__edit" *ngIf="!task.isDone">
+        <button class="task-container__edit-btn" (click) = "goToEditTask(task)">
+            <p class="task-container__edit-btn__tooltip">Edit</p>
+            <fa-icon [icon] = 'faPen' size="2x" [styles]="{'color' : 'white' , 'cursor' : 'pointer'}" class="task-container__edit-btn__icon"
+            ></fa-icon>
+        </button>
+    </div>
     <div class="task-container__badge">
         <div class="task-container__badge-item">{{task.user}}</div>
     </div>
