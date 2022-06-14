@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+@mixin font-abeezee {
+    font-family: ABeeZee , 'sans-serif';
+    color: white;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    @include font-abeezee();
+
+    &__headline{
+        color: #5998C5;
+        font-size: 40px;
+        margin-top: -4px;
+    }
+
+    & form{
+        min-width: 30%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    &__input{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        margin-bottom: 35px;
+        border: 1px solid white;
+        padding: 20px;
+        border-radius: 20px;
+        
+        &-errors{
+            color: #C5283D;
+            margin-top: 5px;
+        }
+        
+        &-container{
+            display: flex;
+            
+            &__label{
+                margin-top: -30px;
+                margin-bottom: 20px;
+                padding: 0px 10px;
+                background: #333333;
+            }
+        }
+        
+        &-field{
+            background: none;
+            border: none;
+            border-bottom: 2px solid #5998C5;
+            outline: none;
+            color-scheme: dark;
+            resize: none;
+            @include font-abeezee();
+            
+            &.ng-touched.ng-invalid{
+                border-bottom: 2px solid #C5283D;
+            }
+        }
+        &-field:active{
+            border: none;
+            outline: none;
+            border-bottom: 2px solid #5998C5;
+        }
+    }
+    &__button{
+        align-self: center;
+        width: 50%;
+        background: none;
+        border-radius: 15px;
+        padding: 10px;
+        border: 2px solid #5998C5;
+        transition-duration: 0.5s;
+        @include font-abeezee();
+        margin-bottom: 20px;
+    }
+
+    &__button:hover{
+        transition-duration: 0.5s;
+        background-color: #5998C5;
+        cursor: pointer;
+    }
+}

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
 .navigation{
     display: flex;
     flex-direction: row;
@@ -7,10 +9,26 @@
     margin-bottom: 10px;
     border-bottom-right-radius: 10px;
     align-items: center;
-    color: white; 
 
     & span{
         margin-left: 15px;
-        font-size: 18px;
+        font-size: 20px;
+        margin-right: 30px; 
+        color: #5998C5;
+        font-family: ABeeZee;
+    }
+
+    & a{
+        margin: 0px 10px;
+        font-size: 16px; 
+        color: white;
+        text-decoration: none;
+        transition-duration: .3s;
+        font-family: ABeeZee;
+        }
+    
+    & a:hover{
+        color: #5998C5;
+        transition-duration: .3s;
     }
 }

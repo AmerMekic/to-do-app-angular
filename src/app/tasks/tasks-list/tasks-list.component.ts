@@ -5,7 +5,6 @@ import { ITask } from '../task';
 import { TasksService } from '../tasks.service';
 
 @Component({
-  selector: 'app-tasks-list',
   templateUrl: './tasks-list.component.html',
   styleUrls: ['./tasks-list.component.scss']
 })
@@ -18,12 +17,12 @@ export class TasksListComponent implements OnInit {
 
   onChange(task: ITask): void{
     task.isDone = !task.isDone;
-    
+    this.tasksService.editTaskCompletion(task);
     if(this.completedTasks.includes(task)){
-      this.completedTasks = this.completedTasks.filter(value => value._id !== task._id)
+      this.completedTasks = this.completedTasks.filter(value => value._id !== task._id);
     }
     else{
-      this.completedTasks.push(task)
+      this.completedTasks.push(task);
     }
     
   }
@@ -31,6 +30,7 @@ export class TasksListComponent implements OnInit {
   ngOnInit(): void {
    this.tasksService.getTasks().subscribe((res: ITask[]) => {
     this.tasks = res;
+    this.completedTasks = res.filter(value => value.isDone === true)
    });
   }
 
