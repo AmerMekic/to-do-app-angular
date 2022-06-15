@@ -12,13 +12,15 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TaskEditComponent } from './tasks/task-edit/task-edit.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SortComponent } from './shared/sort/sort.component';
 @NgModule({
   declarations: [
     AppComponent,
     TasksListComponent,
     TaskComponent,
     TaskFormComponent,
-    TaskEditComponent
+    TaskEditComponent,
+    SortComponent
   ],
   imports: [
     BrowserModule,
