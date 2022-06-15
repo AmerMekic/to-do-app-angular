@@ -2,6 +2,9 @@
     
     <div class='todo-tasks'>
         <p>IN PROGRESS</p>
+        <div class="todo-tasks__sort-container">
+            <app-sort [data]="sortValue" (sortValueEmitter)="sortTasks($event)"></app-sort>
+        </div>
         <div *ngFor='let task of tasks'>
             <div *ngIf='!task.isDone'>
                 <app-task [task]="task" (addCompletedItem)="onChange($event)"></app-task>
@@ -12,7 +15,9 @@
     <div class="completed-tasks">
         <p>COMPLETED</p>
         <div  *ngFor='let task of completedTasks'>
-            <app-task [task]="task" (addCompletedItem)="onChange($event)"></app-task>
+            <div *ngIf = 'task.isDone'>
+                <app-task [task]="task" (addCompletedItem)="onChange($event)"></app-task>
+            </div>
         </div>
     </div>
 

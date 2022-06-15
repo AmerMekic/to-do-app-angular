@@ -1,0 +1,4 @@
+<select  class="sort" [(ngModel)] = "selected" (change)="sortValue()" [compareWith]="compareFn">
+    <option [ngValue]="'Sort'" disabled hidden>Sort</option>
+    <option *ngFor="let data of data" [ngValue] = 'data'>{{data}}</option>
+</select>
