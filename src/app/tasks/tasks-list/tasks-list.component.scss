@@ -29,9 +29,16 @@
         
         &__sort-container{
             display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+            width: 100%;
+            justify-content: space-around;
+            & app-sort{
+                width: 40%;
+            }
+
+            & app-filter{
+                width: 40%;
+            }
+            }
 
         & p{
             align-self: center;

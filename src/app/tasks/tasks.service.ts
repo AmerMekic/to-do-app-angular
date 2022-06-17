@@ -44,6 +44,11 @@ export class TasksService {
     updateDoc(taskRef, {isDone: task.isDone})
   }
   
+  editTaskCategory(task: ITask):void{
+    const taskRef = doc(this.db, `Tasks/${task._id}`)
+    updateDoc(taskRef, {category: task.category})
+  }
+  
   removeTask(id: string):void {
     const taskRef = doc(this.db, `Tasks/${id}`)
     deleteDoc(taskRef)

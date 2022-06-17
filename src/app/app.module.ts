@@ -13,6 +13,8 @@ import { RouterModule } from '@angular/router';
 import { TaskEditComponent } from './tasks/task-edit/task-edit.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SortComponent } from './shared/sort/sort.component';
+import { FilterComponent } from './shared/filter/filter.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,16 +22,17 @@ import { SortComponent } from './shared/sort/sort.component';
     TaskComponent,
     TaskFormComponent,
     TaskEditComponent,
-    SortComponent
+    SortComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
-      {path: '', component: TasksListComponent},
+      {path: '', component: TasksListComponent}, 
       {path: 'addtask', component: TaskFormComponent},
       {path: 'editTask/:id', component: TaskEditComponent}
-    ]),
+    ], {onSameUrlNavigation: 'reload'}),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     FontAwesomeModule,

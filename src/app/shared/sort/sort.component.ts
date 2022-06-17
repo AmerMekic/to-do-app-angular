@@ -6,11 +6,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./sort.component.scss']
 })
 export class SortComponent implements OnInit {
+  
   @Input() data: string[] = [];
   selected: string = 'Sort';
-  test: object = {
-    a: '2s'
-  }
+
   constructor() {}
 
   ngOnInit(): void {
@@ -21,6 +20,7 @@ export class SortComponent implements OnInit {
   sortValue(): void{
     this.sortValueEmitter.emit(this.selected)
   }
+  
   compareFn(value1: string, value2: string): boolean{
     return value1 === value2? true : false
   }
