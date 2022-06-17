@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { differenceInCalendarDays } from 'date-fns';
 import { ITask } from '../task';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { TasksService } from '../tasks.service';
 
 enum DateWarningSignEnum{
   Warning = 'warning',
@@ -23,7 +24,7 @@ export class TaskComponent implements OnInit {
   @Input() task?: ITask;
   currentDate: Date = new Date();
   
-  constructor(private router: Router) {}
+  constructor(private router: Router, private tasksService: TasksService) {}
 
   @Output() addCompletedItem = new EventEmitter<ITask>();
 

@@ -4,12 +4,13 @@
         <p>IN PROGRESS</p>
         <div class="todo-tasks__sort-container">
             <app-sort [data]="sortValue" (sortValueEmitter)="sortTasks($event)"></app-sort>
+            <app-filter (filterEmitter)="onFilter($event)"></app-filter>
         </div>
-        <div *ngFor='let task of tasks'>
+        <div *ngFor='let task of filteredTasks'>
             <div *ngIf='!task.isDone'>
                 <app-task [task]="task" (addCompletedItem)="onChange($event)"></app-task>
-            </div> 
-        </div>
+            </div>
+        </div>  
     </div>
 
     <div class="completed-tasks">
@@ -20,5 +21,4 @@
             </div>
         </div>
     </div>
-
 </div>
