@@ -1,6 +1,11 @@
 <div class='tasks-container'>
     
-    <div class='todo-tasks'>
+    <div class='todo-tasks' 
+    cdkDropList 
+    (cdkDropListDropped)="drop($event)" 
+    #todoTasks = 'cdkDropList'
+    [cdkDropListData]="filteredTasks"
+    [cdkDropListConnectedTo]="doneTasks">
         <p>IN PROGRESS</p>
         <div class="todo-tasks__sort-container">
             <app-sort [data]="sortValue" (sortValueEmitter)="sortTasks($event)"></app-sort>
@@ -8,16 +13,22 @@
         </div>
         <div *ngFor='let task of filteredTasks'>
             <div *ngIf='!task.isDone'>
-                <app-task [task]="task" (addCompletedItem)="onChange($event)"></app-task>
+                <app-task [id]="task._id" [task]="task" (addCompletedItem)="onChange($event)" cdkDrag></app-task>
             </div>
         </div>  
     </div>
 
-    <div class="completed-tasks">
+    <div class="completed-tasks" 
+    cdkDropList
+    [cdkDropListData]="completedTasks"
+    #doneTasks = 'cdkDropList'
+    [cdkDropListConnectedTo]="todoTasks"
+    (cdkDropListDropped)="drop($event)"
+    >
         <p>COMPLETED</p>
-        <div  *ngFor='let task of completedTasks'>
+        <div *ngFor='let task of completedTasks'>
             <div *ngIf = 'task.isDone'>
-                <app-task [task]="task" (addCompletedItem)="onChange($event)"></app-task>
+                <app-task [id]="task._id" [task]="task" (addCompletedItem)="onChange($event)" cdkDrag></app-task>
             </div>
         </div>
     </div>

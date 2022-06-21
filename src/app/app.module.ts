@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AppComponent } from './app.component';
 import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
 import { TaskComponent } from './tasks/task/task.component';
@@ -25,9 +25,10 @@ import { CalendarComponent } from './calendar/calendar.component';
     TaskEditComponent,
     SortComponent,
     FilterComponent,
-    CalendarComponent,
+    CalendarComponent
   ],
   imports: [
+    DragDropModule,
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
