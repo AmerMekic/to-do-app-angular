@@ -10,7 +10,6 @@ import { TasksService } from '../tasks.service';
   styleUrls: ['./tasks-list.component.scss']
 })
 export class TasksListComponent implements OnInit, OnDestroy {
-
   tasks: ITask[] = [];
   filteredTasks: ITask[] = [];
   sub!: Subscription;
