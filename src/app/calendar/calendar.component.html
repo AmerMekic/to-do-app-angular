@@ -1,0 +1,22 @@
+<div class="calendar-container">
+    <div class="calendar-container__date-controls">
+        <fa-icon [icon]="leftArrow" (click) = 'handlePreviousMonth()'></fa-icon>
+        <p> 
+            {{monthNames[currentMonth] + ' ' + currentYear | uppercase}}
+        </p>
+        <fa-icon [icon]="rightArrow" (click) = 'handleNextMonth()'></fa-icon>
+    </div>
+    <div class="calendar-container__table">
+        <div class="calendar-container__table__day-names">
+            <div *ngFor="let dayNames of days" class="calendar-container__table__day-names-item">
+                {{dayNames | uppercase}}
+            </div>
+        </div>
+        <div class="calendar-container__table__day-numbers">
+            <div *ngFor="let day of currentDays" class="calendar-container__table__day-numbers-item"  [id] = 'day.day' #item>
+                {{day.day}}
+                <p class="calendar-container__table__day-numbers-item__tasks">{{day.task}}</p>
+           </div>
+        </div>    
+    </div>
+</div>
