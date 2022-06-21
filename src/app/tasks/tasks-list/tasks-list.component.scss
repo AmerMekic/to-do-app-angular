@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Comfortaa:wght@300;400;500;600;700&display=swap');
 
+.cdk-drag-placeholder{
+    filter: blur(3px);
+}
+
 
 .tasks-container{
     display: flex;
@@ -31,6 +35,7 @@
             display: flex;
             width: 100%;
             justify-content: space-around;
+            
             & app-sort{
                 width: 40%;
             }
@@ -38,7 +43,8 @@
             & app-filter{
                 width: 40%;
             }
-            }
+            
+        }
 
         & p{
             align-self: center;

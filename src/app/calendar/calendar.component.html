@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="calendar-container__table__day-numbers">
-            <div *ngFor="let day of currentDays" class="calendar-container__table__day-numbers-item"  [id] = 'day.day' #item>
+            <div *ngFor="let day of currentDays" class="calendar-container__table__day-numbers-item">
                 {{day.day}}
                 <p class="calendar-container__table__day-numbers-item__tasks">{{day.task}}</p>
            </div>
