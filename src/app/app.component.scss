@@ -25,10 +25,30 @@
         text-decoration: none;
         transition-duration: .3s;
         font-family: ABeeZee;
-        }
+    }
     
     & a:hover{
         color: #5998C5;
         transition-duration: .3s;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .navigation{
+        border-radius: 0%;
+        & span{
+            margin-left: 15px;
+            font-size: 15px;
+            margin-right: 20px; 
+        }
+    
+        & a{
+            margin: 0px 8px;
+            font-size: 15px; 
+        }
+
+        & a:hover{
+            color: white;
+        }
     }
 }

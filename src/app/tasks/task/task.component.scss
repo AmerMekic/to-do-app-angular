@@ -21,6 +21,9 @@
     background-color: #393E41;
 }
  
+.cdk-drag-placeholder{
+    opacity: 0;
+}
 
 .task-container{
     @include flex-column();
@@ -136,6 +139,19 @@
         }
     }
     
+}
 
+@media screen and (max-width: 800px) {
+    .task-container{
 
+        &__task-timeline{
+            margin: 0 15px;
+            margin-top: -22px;      
+            
+            & p{
+                font-size: 11px;
+
+            }
+        }
+    }
 }

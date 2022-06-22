@@ -167,6 +167,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
   drop(event: CdkDragDrop<ITask[]>) {
     let taskID = event.item.element.nativeElement.id;
     let task = this.tasks.find(element => element._id === taskID);
+    console.log(event.item.element);
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {

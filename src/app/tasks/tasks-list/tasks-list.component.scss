@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Comfortaa:wght@300;400;500;600;700&display=swap');
 
-.cdk-drag-placeholder{
-    filter: blur(3px);
-}
-
-
 .tasks-container{
     display: flex;
     flex-flow: row;
@@ -51,6 +46,10 @@
             font-size: 30px;
             font-family: ABeeZee;
             font-weight: 600;
+         }
+
+         & app-task{
+            box-sizing: border-box;
          }
     }
 }

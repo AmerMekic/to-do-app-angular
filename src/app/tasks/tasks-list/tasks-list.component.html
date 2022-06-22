@@ -13,7 +13,7 @@
         </div>
         <div *ngFor='let task of filteredTasks'>
             <div *ngIf='!task.isDone'>
-                <app-task [id]="task._id" [task]="task" (addCompletedItem)="onChange($event)" cdkDrag></app-task>
+                <app-task [id]="task._id" [task]="task" (addCompletedItem)="onChange($event)"></app-task>
             </div>
         </div>  
     </div>
@@ -28,7 +28,7 @@
         <p>COMPLETED</p>
         <div *ngFor='let task of completedTasks'>
             <div *ngIf = 'task.isDone'>
-                <app-task [id]="task._id" [task]="task" (addCompletedItem)="onChange($event)" cdkDrag></app-task>
+                <app-task [id]="task._id" [task]="task" (addCompletedItem)="onChange($event)"></app-task>
             </div>
         </div>
     </div>
