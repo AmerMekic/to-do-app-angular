@@ -1,44 +1,35 @@
-<div class='tasks-container' >
+<div class='tasks-container'>
     
-    <div class='completed-tasks'>
+    <div class='todo-tasks' 
+    cdkDropList 
+    (cdkDropListDropped)="drop($event)" 
+    #todoTasks = 'cdkDropList'
+    [cdkDropListData]="filteredTasks"
+    [cdkDropListConnectedTo]="doneTasks">
         <p>IN PROGRESS</p>
-        <div *ngFor='let task of tasks'>
-            <div *ngIf='!task.isDone' class='task-card'>
-                <div class="completed-tasks__badge">
-                    <div class="completed-tasks__badge-item">asjdashkd</div>
-                </div>
-                <h2>{{task.title}}</h2>
-                <div class='task-description'>
-                    <input type='checkbox' name={{task.title}}
-                    (click)='onChange(task)'
-                    [checked]="task.isDone">
-                    <p>{{task.description}}</p>
-                </div>
-                <div class='task-timeline'>
-                    <p>{{task.addedDate | date : 'dd MMM YYYY'}}</p>
-                    <p>{{task.deadlineDate | date : 'dd MMM YYYY'}}</p>
-                </div>
-            </div> 
+        <div class="todo-tasks__sort-container">
+            <app-sort [data]="sortValue" (sortValueEmitter)="sortTasks($event)"></app-sort>
+            <app-filter (filterEmitter)="onFilter($event)"></app-filter>
         </div>
+        <div *ngFor='let task of filteredTasks'>
+            <div *ngIf='!task.isDone'>
+                <app-task [id]="task._id" [task]="task" (addCompletedItem)="onChange($event)"></app-task>
+            </div>
+        </div>  
     </div>
 
-    <div class="todo-tasks">
+    <div class="completed-tasks" 
+    cdkDropList
+    [cdkDropListData]="completedTasks"
+    #doneTasks = 'cdkDropList'
+    [cdkDropListConnectedTo]="todoTasks"
+    (cdkDropListDropped)="drop($event)"
+    >
         <p>COMPLETED</p>
-        <div  *ngFor='let task of tasks'>
-            <div *ngIf='task.isDone' class='task-card'>
-                <h2>{{task.title}}</h2>
-                <div class='task-description'>
-                    <input type='checkbox' name={{task._id}}
-                    (click)='onChange(task)'
-                    checked=true>
-                    <p>{{task.description}}</p>
-                </div>
-                <div class='task-timeline'>
-                    <p>{{task.addedDate | date : 'dd MMM YYYY'}}</p>
-                    <p>{{task.deadlineDate | date : 'dd MMM YYYY'}}</p>
-                </div>
-            </div> 
+        <div *ngFor='let task of completedTasks'>
+            <div *ngIf = 'task.isDone'>
+                <app-task [id]="task._id" [task]="task" (addCompletedItem)="onChange($event)"></app-task>
+            </div>
         </div>
     </div>
-
 </div>

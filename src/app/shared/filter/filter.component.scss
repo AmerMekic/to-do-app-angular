@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+.filter{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid white;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: ABeeZee, 'sans-serif';
+    font-size: 14px;
+    color: white;
+    
+    &-main{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &-menu{
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        transform: translate(-11px,40px);
+        border: 2px solid white;
+        width: 19.5%;
+        border-radius: 5px;
+        background-color: black;
+        
+        &__options{
+            display: flex;
+            margin: 10px 0px;
+            cursor: pointer;
+            user-select: none;
+            justify-content: center;
+        }
+
+        &__btns{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            
+            & button{
+                font-family: ABeeZee, 'sans-serif';
+                padding: 5px;
+                margin: 10px 0px;
+                border: 2px solid #5998C5;
+                border-radius: 15px;
+                background: none;
+                color: white;
+                width: 40%;
+                cursor: pointer;
+                transition-duration: 0.5s;            
+            }
+
+            & button:hover{
+                background-color: #05B384;
+                transition-duration: 0.5s;
+            }
+        }
+
+    }
+}

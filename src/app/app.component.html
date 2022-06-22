@@ -1,4 +1,7 @@
 <nav class='navigation'>
-  <span>ToDoApp</span>
+  <span>ToDoApp</span> 
+  <a routerLink="/" routerLinkActive="true" ariaCurrentWhenActive="page">All tasks</a>
+  <a routerLink="/addtask" routerLinkActive="true" ariaCurrentWhenActive="page">Add a task</a>
+  <a routerLink="/calendar" routerLinkActive="true" ariaCurrentWhenActive="page">Calendar</a>
 </nav>
-<app-tasks-list></app-tasks-list>
+<router-outlet></router-outlet>

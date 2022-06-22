@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+.sort{
+    font-family: ABeeZee, 'sans-serif';
+    background: none;
+    border: 2px solid white;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    & option{
+        background-color: none;
+        color: black;
+    }
+}
+

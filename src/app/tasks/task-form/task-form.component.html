@@ -1,0 +1,62 @@
+<div class="form-container">
+    <h2 class="form-container__headline">Add a new task</h2>
+    <form #taskForm = 'ngForm' (ngSubmit)="onSubmit(taskForm)">
+        <div class="form-container__input">
+            <div class="form-container__input-container">
+                <label for="title" class="form-container__input-container__label">Task title </label>
+            </div> 
+            <input class="form-container__input-field" type="text" name="title" [(ngModel)]="task.title" #name="ngModel"
+            required minlength="2" maxlength="15">
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="form-container__input-errors">
+                <div *ngIf="name.errors?.['required']">
+                    Title is required
+                </div>
+                <div *ngIf="name.errors?.['minlength']">
+                    Title must be at least 2 characters
+                </div>
+            </div>
+        </div>
+        <div class="form-container__input">
+            <div class="form-container__input-container">
+                <label for="description" class="form-container__input-container__label">Task description </label>
+            </div>  
+            <textarea  class="form-container__input-field" type="text" name="description" [(ngModel)]="task.description" #description="ngModel"
+            required minlength="5" maxlength="200" cols="20" rows="5"></textarea>
+            <div *ngIf="description.invalid && (description.dirty || description.touched)" class="form-container__input-errors">
+                <div *ngIf="description.errors?.['required']">
+                    Description is required
+                </div>
+                <div *ngIf="description.errors?.['minlength']">
+                    Description must be at least 5 characters
+                </div>
+            </div>
+        </div>
+        <div class="form-container__input">
+            <div class="form-container__input-container">
+                <label for="user" class="form-container__input-container__label">User </label>
+            </div> 
+            <input required minlength="2" maxlength="15" class="form-container__input-field" type="text" name="user"  [(ngModel)]="task.user" #user="ngModel">
+            <div *ngIf="user.invalid && (user.dirty || user.touched)" class="form-container__input-errors">
+                <div *ngIf="user.errors?.['required']">
+                    Username is required
+                </div>
+                <div *ngIf="user.errors?.['minlength']">
+                    Username must be at least 2 characters
+                </div>
+            </div>
+        </div>
+        <div class="form-container__input">
+            <div class="form-container__input-container">
+                <label for="user" class="form-container__input-container__label">Deadline </label>
+            </div>
+            <input class="form-container__input-field" type="date" name="date" [(ngModel)]="deadline" #date="ngModel" required>
+            <div *ngIf="date.invalid && (date.dirty || date.touched)" class="form-container__input-errors">
+                <div *ngIf="date.errors?.['required']">
+                    Date is required
+                </div>
+
+            </div>
+        </div>
+        <button type="submit" class="form-container__button">Add task</button>
+    </form>
+</div>

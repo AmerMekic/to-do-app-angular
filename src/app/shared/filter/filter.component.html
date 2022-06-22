@@ -1,0 +1,24 @@
+
+<div class="filter" >
+    <div class="filter-main" (click)="openFilterMenu(filterMenu)">
+        <span>Filter</span>
+        <fa-icon [icon]="faDownArrow"></fa-icon>
+    </div>
+    <div class="filter-menu" #filterMenu (mouseleave)="openFilterMenu(filterMenu)">
+        <div class="filter-menu__options" value="expired" #expired (click)="toogleFilters(expired); filterValuesEmitter()">
+            < 0 days
+        </div>
+        <div class="filter-menu__options" value="danger" #danger (click)="toogleFilters(danger); filterValuesEmitter()">
+            < 7 days
+        </div>
+        <div class="filter-menu__options" value="warning" #warning (click)="toogleFilters(warning); filterValuesEmitter()"> 
+            < 15 days
+        </div>
+        <div class="filter-menu__options" value="neutral" #neutral (click)="toogleFilters(neutral); filterValuesEmitter()">
+            > 15 days
+        </div>
+        <div class="filter-menu__btns">
+            <button (click)="clearFilters()">Clear</button>
+        </div>
+    </div>
+</div>

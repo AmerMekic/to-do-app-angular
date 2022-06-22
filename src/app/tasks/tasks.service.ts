@@ -1,33 +1,57 @@
 import { Injectable } from '@angular/core';
 import { ITask } from './task';
-import  data from '../../generated.json';
+import { addDoc, collection, collectionData, deleteDoc, doc, docData, Firestore, updateDoc } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class TasksService {
-  tasks: ITask[] = []
-  constructor() { }
-  
-  getTasks(): ITask[] {
-    
-    data.forEach((value,index) => {
-      
-      this.tasks[index] = {
-        _id: value._id,
-        title: value.title,
-        description: value.description,
-        deadlineDate: new Date(value.deadlineDate),
-        addedDate: new Date(),
-        isDone: value.isDone,
-        category: value.category,
-        user: value.user 
-      }
 
-    });
-    
-    return this.tasks;
+  constructor(private db: Firestore) {};
+
+  getTasks(): Observable<ITask[]>{
+    const tasksRef = collection(this.db, 'Tasks');
+    return collectionData(tasksRef, { idField: '_id' }) as Observable<ITask[]>
   }
-}
 
+  getTaskByID(id: string): Observable<ITask>{
+    const taskRef = doc(this.db, `Tasks/${id}`);
+    return docData(taskRef, {idField: '_id'}) as Observable<ITask>
+  }
+
+  addTask(task: ITask){
+    const tasksRef = collection(this.db, 'Tasks');
+    return addDoc(tasksRef, task)
+  }
+
+  editTask(task: ITask):void {
+    const taskRef = doc(this.db, `Tasks/${task._id}`);
+    updateDoc(taskRef, {
+      title: task.title,
+      description: task.description,
+      deadlineDate: task.deadlineDate,
+      addedDate: task.addedDate,
+      isDone: task.isDone,
+      category: task.category,
+      user: task.user
+    })
+  }
+
+  editTaskCompletion(task: ITask):void{
+    const taskRef = doc(this.db, `Tasks/${task._id}`)
+    updateDoc(taskRef, {isDone: task.isDone})
+  }
+  
+  editTaskCategory(task: ITask):void{
+    const taskRef = doc(this.db, `Tasks/${task._id}`)
+    updateDoc(taskRef, {category: task.category})
+  }
+  
+  removeTask(id: string):void {
+    const taskRef = doc(this.db, `Tasks/${id}`)
+    deleteDoc(taskRef)
+  }
+
+}

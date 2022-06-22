@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+
+@mixin table-entries(){
+    border: 1px solid white;
+    color: white;
+    padding: 20px;
+    font-family: ABeeZee, 'sans-serif';
+    
+}
+
+.calendar-container{
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    height: 90vh;
+    
+    &__date-controls{
+        color: white;
+        font-family: ABeeZee, 'sans-serif';
+        font-size: 30px;
+        margin: 10px 0px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 25%;
+        user-select: none;
+        & fa-icon{
+            padding: 2px 8px;
+        }
+
+        & fa-icon:hover{
+            cursor: pointer;
+            border-radius: 100px;
+            background-color: grey;
+        }
+
+        & p{
+            align-self: center;
+        }
+    }
+
+    &__table{
+        width: 70%;
+        height: 100%;
+        
+        &__day-names{
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+
+            &-item{
+                font-size: 19px;
+                text-align: end;
+                @include table-entries();
+                border-top: none;
+                color: #5998C5;
+
+            }  
+        }
+
+        &__day-numbers{
+            height: 70%;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            
+            &-item{
+                text-align: end;
+                @include table-entries();
+                
+                &__tasks{
+                    font-family: ABeeZee;
+                    font-size: 12px;
+                    padding: 0;
+                    margin: 2px;
+                }
+            }
+            
+             &-item:hover{
+                background-color: grey;
+            }
+        }
+    }
+}
